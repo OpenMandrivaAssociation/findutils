@@ -7,14 +7,14 @@ Group:		File tools
 URL:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/findutils/findutils-%{version}.tar.gz
 Source1:	ftp://ftp.gnu.org/pub/gnu/findutils/findutils-%{version}.tar.gz.sig
-Patch4:		findutils-4.2.15-no-locate.patch
+Patch4:		findutils-4.2.31-no-locate.patch
 Requires(post): info-install
 Requires(preun): info-install
-BuildRequires:	automake1.9
-BuildRequires:	autoconf2.5
-BuildRequires:	libtool
+#BuildRequires:	automake1.9
+#BuildRequires:	autoconf2.5
+#BuildRequires:	libtool
 # for autoreconf -> autopoint
-BuildRequires:	cvs gettext-devel
+BuildRequires:	gettext-devel
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -34,13 +34,19 @@ useful for finding things on your system.
 %patch4 -p1 -b .no-locate
 
 # needed by patch4
-ACLOCAL=aclocal-1.9 AUTOMAKE=automake-1.9 autoreconf --force --install
+autoreconf
 
 %build
 
-%configure2_5x
+%configure2_5x \
+	--disable-rpath \
+	--enable-leaf-optimisation \
+	--enable-d_type-optimization
 
 %make
+
+%check
+make check
 
 %install
 rm -rf %{buildroot}
