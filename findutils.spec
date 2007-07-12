@@ -10,10 +10,6 @@ Source1:	ftp://ftp.gnu.org/pub/gnu/findutils/findutils-%{version}.tar.gz.sig
 Patch4:		findutils-4.2.31-no-locate.patch
 Requires(post): info-install
 Requires(preun): info-install
-#BuildRequires:	automake1.9
-#BuildRequires:	autoconf2.5
-#BuildRequires:	libtool
-# for autoreconf -> autopoint
 BuildRequires:	gettext-devel
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
