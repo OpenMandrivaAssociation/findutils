@@ -11,6 +11,7 @@ Patch4:		findutils-4.2.31-no-locate.patch
 Requires(post): info-install
 Requires(preun): info-install
 BuildRequires:	gettext-devel
+Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 The findutils package contains programs which will help you locate
