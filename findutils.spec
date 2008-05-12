@@ -1,17 +1,17 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
-Version:	4.2.33
+Version:	4.4.0
 Release:	%mkrel 1
 License:	GPLv3
 Group:		File tools
 URL:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/findutils/findutils-%{version}.tar.gz
-Source1:	ftp://ftp.gnu.org/pub/gnu/findutils/findutils-%{version}.tar.gz.sig
-Patch4:		findutils-4.2.31-no-locate.patch
-Requires(post): info-install
+Source1:	%{SOURCE0}.sig
+Patch4:		%{name}-4.4.0-no-locate.patch
+Requires(post):	info-install
 Requires(preun): info-install
 BuildRequires:	gettext-devel
-Buildroot:	%{_tmppath}/%{name}-%{version}-root
+Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The findutils package contains programs which will help you locate
@@ -37,7 +37,8 @@ autoreconf
 %configure2_5x \
 	--disable-rpath \
 	--enable-leaf-optimisation \
-	--enable-d_type-optimization
+	--enable-d_type-optimization \
+	--with-fts
 
 %make
 
@@ -69,7 +70,8 @@ rm -rf %{buildroot}
 %doc NEWS README
 /bin/find
 %{_bindir}/find
+%{_bindir}/oldfind
 %{_bindir}/xargs
 %{_mandir}/man1/find.1*
 %{_mandir}/man1/xargs.1*
-%{_infodir}/find.info*
+%{_infodir}/find*
