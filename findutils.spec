@@ -1,13 +1,13 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
-Version:	4.4.0
-Release:	%mkrel 3
+Version:	4.4.1
+Release:	%mkrel 1
 License:	GPLv3
 Group:		File tools
 URL:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/findutils/findutils-%{version}.tar.gz
 Source1:	%{SOURCE0}.sig
-Patch4:		%{name}-4.4.0-no-locate.patch
+Patch4:		%{name}-4.4.1-no-locate.patch
 Requires(post):	info-install
 Requires(preun): info-install
 BuildRequires:	gettext-devel
@@ -25,15 +25,10 @@ You should install findutils because it includes tools that are very
 useful for finding things on your system.
 
 %prep
-
 %setup -q
 %patch4 -p1 -b .no-locate
 
-# needed by patch4
-autoreconf
-
 %build
-
 %configure2_5x \
 	--disable-rpath \
 	--enable-leaf-optimisation \
