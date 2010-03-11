@@ -5,7 +5,7 @@ Release:	%mkrel 2
 License:	GPLv3
 Group:		File tools
 URL:		http://www.gnu.org/software/findutils/findutils.html
-Source0:	ftp://ftp.gnu.org/pub/gnu/findutils/findutils-%{version}.tar.gz
+Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Source1:	%{SOURCE0}.sig
 Patch0:		findutils-4.4.5-no-locate.patch
 Requires(post):	info-install
