@@ -1,7 +1,7 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
 Version:	4.5.9
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv3
 Group:		File tools
 URL:		http://www.gnu.org/software/findutils/findutils.html
@@ -51,7 +51,7 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 
 %{find_lang} %{name}
 
-%post
+%posttrans
 %_install_info find.info
 
 %preun
