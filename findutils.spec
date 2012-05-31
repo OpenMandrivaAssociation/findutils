@@ -1,7 +1,7 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
 Version:	4.5.10
-Release:	%mkrel 1
+Release:	2
 License:	GPLv3
 Group:		File tools
 URL:		http://www.gnu.org/software/findutils/findutils.html
@@ -9,7 +9,6 @@ Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Source1:	%{SOURCE0}.sig
 Patch0:		findutils-4.4.5-no-locate.patch
 BuildRequires:	gettext-devel
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The findutils package contains programs which will help you locate
@@ -24,7 +23,7 @@ useful for finding things on your system.
 
 %prep
 %setup -q
-%patch0 -p0 -b .locate
+%patch0 -p0 -b .locate~
 
 %build
 %configure2_5x \
@@ -39,21 +38,15 @@ useful for finding things on your system.
 make check
 
 %install
-rm -rf %{buildroot}
-
 %makeinstall_std
 
 install -d %{buildroot}/bin
 mv %{buildroot}%{_bindir}/find %{buildroot}/bin
 ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 
-%{find_lang} %{name}
-
-%clean
-rm -rf %{buildroot}
+%find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc NEWS README
 /bin/find
 %{_bindir}/find
