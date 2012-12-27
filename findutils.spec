@@ -8,6 +8,7 @@ URL:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Source1:	%{SOURCE0}.sig
 Patch0:		findutils-4.4.5-no-locate.patch
+Patch1:		findutils-4.5.10-no-gets.patch
 BuildRequires:	gettext-devel
 
 %description
@@ -24,6 +25,7 @@ useful for finding things on your system.
 %prep
 %setup -q
 %patch0 -p0 -b .locate
+%patch1 -p1 -b .gets
 
 %build
 %configure2_5x \
@@ -47,7 +49,6 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 %{find_lang} %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc NEWS README
 /bin/find
 %{_bindir}/find
@@ -56,162 +57,3 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 %{_mandir}/man1/find.1*
 %{_mandir}/man1/xargs.1*
 %{_infodir}/find*
-
-
-%changelog
-* Sun May 15 2011 Oden Eriksson <oeriksson@mandriva.com> 4.5.10-1mdv2011.0
-+ Revision: 674766
-- 4.5.10
-
-* Tue May 03 2011 Oden Eriksson <oeriksson@mandriva.com> 4.5.9-3
-+ Revision: 664307
-- mass rebuild
-
-  + Per Ã˜yvind Karlsen <peroyvind@mandriva.org>
-    - workaround ordering issue causing info page install to fail in fresh chroot
-
-* Sun Jul 25 2010 Sandro Cazzaniga <kharec@mandriva.org> 4.5.9-1mdv2011.0
-+ Revision: 558688
-- update to 4.5.9
-
-* Wed Apr 28 2010 Pascal Terjan <pterjan@mandriva.org> 4.5.8-1mdv2010.1
-+ Revision: 539986
-- update to 4.5.8
-- update nolocate patch to remove parts of the doc failing when update is not built
-
-  + Ahmad Samir <ahmadsamir@mandriva.org>
-    - fix src url
-
-* Wed Mar 10 2010 Ahmad Samir <ahmadsamir@mandriva.org> 4.5.5-2mdv2010.1
-+ Revision: 517295
-- readd dropped no-locate patch
-
-* Mon Mar 08 2010 Sandro Cazzaniga <kharec@mandriva.org> 4.5.5-1mdv2010.1
-+ Revision: 516346
-- drop patch
-- update to 4.5.5
-
-* Mon Jun 08 2009 Funda Wang <fwang@mandriva.org> 4.4.2-1mdv2010.0
-+ Revision: 383841
-- New version 4.4.2
-
-* Sun May 03 2009 Funda Wang <fwang@mandriva.org> 4.4.1-1mdv2010.0
-+ Revision: 370974
-- New version 4.4.1
-
-* Sat Dec 20 2008 Oden Eriksson <oeriksson@mandriva.com> 4.4.0-3mdv2009.1
-+ Revision: 316575
-- rebuild
-
-* Wed Aug 06 2008 Thierry Vignaud <tv@mandriva.org> 4.4.0-2mdv2009.0
-+ Revision: 264463
-- rebuild early 2009.0 package (before pixel changes)
-
-* Mon May 12 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 4.4.0-1mdv2009.0
-+ Revision: 206178
-- new version
-- Patch4: rediff
-- use fts
-- fix file list
-
-* Thu Feb 21 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 4.2.33-1mdv2008.1
-+ Revision: 173447
-- new version
-
-* Sat Jan 26 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 4.2.32-1mdv2008.1
-+ Revision: 158426
-- new version
-- new license policy
-
-* Sat Jan 12 2008 Thierry Vignaud <tv@mandriva.org> 4.2.31-2mdv2008.1
-+ Revision: 149725
-- rebuild
-- kill re-definition of %%buildroot on Pixel's request
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-* Thu Jul 12 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 4.2.31-1mdv2008.0
-+ Revision: 51596
-- rediff patch 4
-- drop useless buildrequires
-- add optimizations
-- add checks
-- new version
-
-
-* Tue Mar 06 2007 Emmanuel Andry <eandry@mandriva.org> 4.2.30-1mdv2007.0
-+ Revision: 133428
-- New version 4.2.30
-- New version 4.2.29
-
-* Wed Nov 22 2006 Oden Eriksson <oeriksson@mandriva.com> 4.2.28-1mdv2007.1
-+ Revision: 86345
-- Import findutils
-
-* Wed Nov 22 2006 Oden Eriksson <oeriksson@mandriva.com> 4.2.28-1mdv2007.1
-- 4.2.28
-- fix deps
-- bunzip patches
-
-* Fri Dec 23 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 4.2.27-2mdk
-- Fix prerequires
-
-* Thu Dec 22 2005 Oden Eriksson <oeriksson@mandriva.com> 4.2.27-1mdk
-- 4.2.27
-
-* Mon Oct 10 2005 Christiaan Welvaart <cjw@daneel.dyndns.org> 4.2.25-2mdk
-- add BuildRequires: cvs gettext-devel - for autoreconf's call to autopoint
-
-* Thu Oct 06 2005 Giuseppe Ghibò <ghibo@mandriva.com> 4.2.25-1mdk
-- Release: 4.2.25.
-
-* Fri Aug 05 2005 Giuseppe Ghibò <ghibo@mandriva.com> 4.2.24-1mdk
-- Release: 4.2.24.
-
-* Sun Jul 10 2005 Giuseppe Ghibò <ghibo@mandriva.com> 4.2.23-1mdk
-- Release: 4.2.23.
-
-* Sun Apr 17 2005 Oden Eriksson <oeriksson@mandriva.com> 4.2.20-1mdk
-- 4.2.20
-- drop the nostatmountpt and the "Too many levels of symbolic links" 
-  when using option "-follow" patches, it's implemented upstream
-
-* Tue Mar 08 2005 Pixel <pixel@mandrakesoft.com> 4.2.18-2mdk
-- added patch1 to fix "Too many levels of symbolic links" when using option "-follow"
-
-* Thu Mar 03 2005 Oden Eriksson <oeriksson@mandrakesoft.com> 4.2.18-1mdk
-- 4.2.18
-- added P0 to make it work even with dead nfs mounts(!)
-- misc spec file fixes
-
-* Mon Feb 14 2005 Giuseppe Ghibò <ghibo@mandrakesoft.com> 4.2.17-1mdk
-- Release: 4.2.18.
-- cleaned spec file.
-- Removed Patch0, merged upstream.
-
-* Sun Feb 13 2005 Oden Eriksson <oeriksson@mandrakesoft.com> 4.2.15-2mdk
-- added P0 (#13621)
-
-* Mon Feb 07 2005 Abel Cheung <deaddog@mandrakesoft.com> 4.2.15-1mdk
-- New release 4.2.15
-- Rediff Patch4 (don't build locate)
-- Remove Patch8 (upstream)
-
-* Sat Jan 08 2005 Pascal Terjan <pterjan@mandrake.org> 4.2.11-2mdk
-- bug #12944 (patch 8)
-
-* Thu Jan 06 2005 Thierry Vignaud <tvignaud@mandrakesoft.com> 4.2.11-1mdk
-- new release
-- fix url
-- kill patches 0, 1, 2, 5, 6 (merged upstream)
-- kill patches 3 (useless) and 7 (which break the installation)
-- rediff patch 4
-
-* Sat Aug 14 2004 Christiaan Welvaart <cjw@daneel.dyndns.org> 4.1.20-4mdk
-- fix autotools calls
-
-* Tue Aug 10 2004 Giuseppe GhibÃ² <ghibo@mandrakesoft.com> 4.1.20-3mdk
-- Merged Patch3,4,5,6,7 from RH.
-- Removed Source1 (unused).
-
