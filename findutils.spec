@@ -1,14 +1,13 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
-Version:	4.5.10
-Release:	2
+Version:	4.5.11
+Release:	1
 License:	GPLv3
 Group:		File tools
 URL:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Source1:	%{SOURCE0}.sig
 Patch0:		findutils-4.4.5-no-locate.patch
-Patch1:		findutils-4.5.10-no-gets.patch
 BuildRequires:	gettext-devel
 
 %description
@@ -24,10 +23,10 @@ useful for finding things on your system.
 
 %prep
 %setup -q
-%patch0 -p0 -b .locate
-%patch1 -p1 -b .gets
+%patch0 -p1 -b .locate
 
 %build
+autoreconf -iv
 %configure2_5x \
 	--disable-rpath \
 	--enable-leaf-optimisation \
@@ -55,5 +54,6 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 %{_bindir}/oldfind
 %{_bindir}/xargs
 %{_mandir}/man1/find.1*
+%{_mandir}/man1/oldfind.1.*
 %{_mandir}/man1/xargs.1*
 %{_infodir}/find*
