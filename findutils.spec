@@ -9,6 +9,7 @@ Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Source1:	%{SOURCE0}.sig
 Patch0:		findutils-4.4.5-no-locate.patch
 BuildRequires:	gettext-devel
+BuildRequires:	texinfo
 
 %description
 The findutils package contains programs which will help you locate
