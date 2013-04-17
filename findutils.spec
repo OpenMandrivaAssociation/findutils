@@ -4,12 +4,13 @@ Version:	4.5.11
 Release:	1
 License:	GPLv3
 Group:		File tools
-URL:		http://www.gnu.org/software/findutils/findutils.html
+Url:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Source1:	%{SOURCE0}.sig
 Patch0:		findutils-4.4.5-no-locate.patch
-BuildRequires:	gettext-devel
+
 BuildRequires:	texinfo
+BuildRequires:	gettext-devel
 
 %description
 The findutils package contains programs which will help you locate
@@ -24,12 +25,11 @@ useful for finding things on your system.
 
 %prep
 %setup -q
-%patch0 -p1 -b .locate
+%apply_patches
 
 %build
 autoreconf -iv
 %configure2_5x \
-	--disable-rpath \
 	--enable-leaf-optimisation \
 	--enable-d_type-optimization \
 	--with-fts
@@ -46,7 +46,7 @@ install -d %{buildroot}/bin
 mv %{buildroot}%{_bindir}/find %{buildroot}/bin
 ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 
-%{find_lang} %{name}
+%find_lang %{name}
 
 %files -f %{name}.lang
 %doc NEWS README
@@ -58,3 +58,4 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 %{_mandir}/man1/oldfind.1.*
 %{_mandir}/man1/xargs.1*
 %{_infodir}/find*
+
