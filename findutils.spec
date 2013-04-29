@@ -8,6 +8,16 @@ Url:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Source1:	%{SOURCE0}.sig
 Patch0:		findutils-4.4.5-no-locate.patch
+# learn find to recognize autofs file system by reading /proc/mounts
+# as autofs mount points are not listed in /etc/mtab
+Patch1:		findutils-4.4.2-autofs.patch
+
+# add a new option -xautofs to find to not descend into directories on autofs
+# file systems
+Patch2:		findutils-4.4.2-xautofs.patch
+
+# eliminate compile-time warnings
+Patch3:		findutils-4.5.7-warnings.patch
 
 BuildRequires:	texinfo
 BuildRequires:	gettext-devel
@@ -28,7 +38,10 @@ useful for finding things on your system.
 %apply_patches
 
 %build
-autoreconf -iv
+# Don't build or install locate because it conflicts with slocate,
+# which is a secure version of locate.
+sed -i '/^SUBDIRS/s/locate//' Makefile.in
+
 %configure2_5x \
 	--enable-leaf-optimisation \
 	--enable-d_type-optimization \
