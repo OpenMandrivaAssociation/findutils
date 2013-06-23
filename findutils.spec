@@ -1,7 +1,7 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
 Version:	4.5.11
-Release:	2
+Release:	3
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
@@ -41,9 +41,13 @@ useful for finding things on your system.
 # Don't build or install locate because it conflicts with slocate,
 # which is a secure version of locate.
 sed -i '/^SUBDIRS/s/locate//' Makefile.in
+libtoolize --copy --force
+autoreconf -fiv
 
 %configure2_5x \
 	--enable-leaf-optimisation \
+	--with-packager="%{vendor}" \
+	--with-packager-bug-reports="http://issue.openmandriva.org" \
 	--enable-d_type-optimization \
 	--with-fts
 
