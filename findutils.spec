@@ -1,7 +1,7 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
-Version:	4.5.11
-Release:	3
+Version:	4.5.12
+Release:	1
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
@@ -15,9 +15,6 @@ Patch1:		findutils-4.4.2-autofs.patch
 # add a new option -xautofs to find to not descend into directories on autofs
 # file systems
 Patch2:		findutils-4.4.2-xautofs.patch
-
-# eliminate compile-time warnings
-Patch3:		findutils-4.5.7-warnings.patch
 
 BuildRequires:	texinfo
 BuildRequires:	gettext-devel

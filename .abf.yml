@@ -1,5 +1,6 @@
 removed_sources:
   findutils-4.5.10.tar.gz: e984c8795cb495623ff50ee319c8c0d8843d9bc2
-sources:
   findutils-4.5.11.tar.gz: d56f9027dfbde529b15e53eee354ceb2ee91e524
-  findutils-4.5.11.tar.gz.sig: ee8d45281f5828bc7ab303ac76843f03b5d2881c
+sources:
+  findutils-4.5.12.tar.gz: c6c3d5b921fba12cf8eeabbcffab2fc9ecb893e2
+  findutils-4.5.12.tar.gz.sig: 82a508d14b4040ceaddd24244fd283aad7c80ec4
