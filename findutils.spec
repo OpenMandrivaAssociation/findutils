@@ -1,12 +1,11 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
-Version:	4.5.12
-Release:	8
+Version:	4.5.14
+Release:	1
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
-Source1:	%{SOURCE0}.sig
 Patch0:		findutils-4.4.5-no-locate.patch
 # learn find to recognize autofs file system by reading /proc/mounts
 # as autofs mount points are not listed in /etc/mtab
@@ -41,7 +40,7 @@ sed -i '/^SUBDIRS/s/locate//' Makefile.in
 libtoolize --copy --force
 autoreconf -fiv
 
-%configure2_5x \
+%configure \
 	--enable-leaf-optimisation \
 	--with-packager="%{vendor}" \
 	--with-packager-bug-reports="http://issue.openmandriva.org" \
@@ -72,149 +71,3 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 %{_mandir}/man1/oldfind.1.*
 %{_mandir}/man1/xargs.1*
 %{_infodir}/find*
-
-
-%changelog
-* Fri Oct 11 2013 Alexander Khryukin <alexander@mezon.ru> 4.5.12-1
-+ Revision: 53102c9
-- version update 4.5.12
-
-* Sun Jun 23 2013 Alexander Khryukin <alexander@mezon.ru> 4.5.11-3
-+ Revision: cdbadca
-- rel up and some vendor-related fixed added
-
-* Fri Jun 07 2013 Tomasz Paweł Gajc <phenomenal@wp.pl> 4.5.11-2
-+ Revision: 837b694
-- rebuild
-
-* Mon Apr 29 2013 Alexander Khryukin <alexander@mezon.ru> 4.5.11-1
-+ Revision: 3311843
-- fedora patches related to autofs
-
-* Wed Apr 17 2013 mdawkins (Matthew Dawkins) <mattydaw@gmail.com> 4.5.11-1
-+ Revision: f2f3bf0
-- cleaned up spec
-
-* Mon Mar 25 2013 Tomasz Paweł Gajc <tpg@mandriva.org> 4.5.11-1
-+ Revision: dbf1e13
-- add br on texinfo
-
-* Mon Mar 18 2013 Alexander Khryukin <alexander@mezon.ru> 4.5.11-1
-+ Revision: 7f8a354
-- version update 4.5.11 and patch findutils-4.4.5-no-locate.patch rediff
-
-* Fri Dec 28 2012 Alexander Khryukin <alexander@mezon.ru> 4.5.10-2
-+ Revision: 42bba99
-- findutils-4.5.10-no-gets.patch added
-
-* Sat Dec 08 2012 alex <alex@localhost.localdomain> 4.5.10-2
-+ Revision: d22d03c
-- merging with rosa2012.1 of project findutils
-
-* Thu May 31 2012 peroyvind <peroyvind@mandriva.org> 4.5.10-2
-+ Revision: 50bf911
-- clean out old junk
-- SILENT: svn-revision: 801561
-
-* Thu May 31 2012 peroyvind <peroyvind@mandriva.org> 4.5.10-1
-+ Revision: 911cd71
-- drop info-install stuff, it's now handled by triggers
-- SILENT: svn-revision: 801560
-
-* Sun May 15 2011 oden <oden@mandriva.org> 4.5.10-1
-+ Revision: 77b206c
-- - 4.5.10
-- SILENT: svn-revision: 674766
-
-* Tue May 03 2011 oden <oden@mandriva.org> 4.5.9-3
-+ Revision: 525be8d
-- - mass rebuild
-- SILENT: svn-revision: 664307
-
-* Fri Jan 14 2011 peroyvind <peroyvind@mandriva.org> 4.5.9-2
-+ Revision: 88c53d3
-- workaround ordering issue causing info page install to fail in fresh chroot
-- SILENT: svn-revision: 631026
-
-* Sun Jul 25 2010 kharec <kharec@mandriva.org> 4.5.9-1
-+ Revision: 2d2e0d3
-- - update to 4.5.9
-- SILENT: svn-revision: 558688
-
-* Wed Apr 28 2010 pterjan <pterjan@mandriva.org> 4.5.8-1
-+ Revision: 086a7be
-- - update to 4.5.8
-- - update nolocate patch to remove parts of the doc failing when update is not built
-- SILENT: svn-revision: 539985
-
-* Thu Mar 11 2010 ahmadsamir <ahmadsamir@mandriva.org> 4.5.5-2
-+ Revision: 9347930
-- - fix src url
-- SILENT: svn-revision: 517941
-
-* Wed Mar 10 2010 ahmadsamir <ahmadsamir@mandriva.org> 4.5.5-2
-+ Revision: 8c8ae0a
-- - readd dropped no-locate patch
-- SILENT: svn-revision: 517295
-
-* Mon Mar 08 2010 kharec <kharec@mandriva.org> 4.5.5-1
-+ Revision: 49b69e2
-- - drop patch
-- - update to 4.5.5
-- SILENT: svn-revision: 516346
-
-* Mon Jun 08 2009 fwang <fwang@mandriva.org> 4.4.2-1
-+ Revision: 43780d7
-- New version 4.4.2
-- SILENT: svn-revision: 383841
-
-* Sun May 03 2009 fwang <fwang@mandriva.org> 4.4.1-1
-+ Revision: e2796a2
-- New version 4.4.1
-- SILENT: svn-revision: 370974
-
-* Sat Dec 20 2008 oden <oden@mandriva.org> 4.4.0-3
-+ Revision: 02f2ed9
-- - rebuild
-- SILENT: svn-revision: 316575
-
-* Wed Aug 06 2008 tv <tv@mandriva.org> 4.4.0-2
-+ Revision: fd31779
-- rebuild early 2009.0 package (before pixel changes)
-- SILENT: svn-revision: 264463
-
-* Mon May 12 2008 tpg <tpg@mandriva.org> 4.4.0-1
-+ Revision: 6d733af
-- - new version
-- - Patch4: rediff
-- - use fts
-- - fix file list
-- SILENT: svn-revision: 206178
-
-* Thu Feb 21 2008 tpg <tpg@mandriva.org> 4.2.33-1
-+ Revision: 338dbf2
-- - new version
-- SILENT: svn-revision: 173447
-
-* Sat Jan 26 2008 tpg <tpg@mandriva.org> 4.2.32-1
-+ Revision: 864b321
-- - new version
-- - new license policy
-- SILENT: svn-revision: 158426
-
-* Sat Jan 12 2008 tv <tv@mandriva.org> 4.2.31-2
-+ Revision: 9192a57
-- rebuild
-- SILENT: svn-revision: 149725
-
-* Fri Dec 21 2007 blino <blino@mandriva.org> 4.2.31-1
-+ Revision: 2839bc9
-- restore BuildRoot
-- SILENT: svn-revision: 136415
-
-* Mon Dec 17 2007 tv <tv@mandriva.org> 4.2.31-1
-+ Revision: 59e0217
-- kill re-definition of %buildroot on Pixel's request
-- SILENT: svn-revision: 125012
-
-
