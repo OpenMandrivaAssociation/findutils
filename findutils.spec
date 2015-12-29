@@ -63,6 +63,8 @@ make check
 install -d %{buildroot}/bin
 mv %{buildroot}%{_bindir}/find %{buildroot}/bin
 ln -sf ../../bin/find %{buildroot}%{_bindir}/find
+# (tpg) compat symlink
+ln -sf ../../bin/find %{buildroot}%{_bindir}/oldfind
 
 %find_lang %{name}
 
@@ -73,6 +75,5 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 %{_bindir}/oldfind
 %{_bindir}/xargs
 %{_mandir}/man1/find.1*
-%{_mandir}/man1/oldfind.1.*
 %{_mandir}/man1/xargs.1*
 %{_infodir}/find*
