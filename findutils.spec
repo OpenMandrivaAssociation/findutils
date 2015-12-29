@@ -1,23 +1,23 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
-Version:	4.5.11
-Release:	8
+Version:	4.6.0
+Release:	0.1
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
-Source1:	%{SOURCE0}.sig
-Patch0:		findutils-4.4.5-no-locate.patch
-# learn find to recognize autofs file system by reading /proc/mounts
-# as autofs mount points are not listed in /etc/mtab
-Patch1:		findutils-4.4.2-autofs.patch
-
+# do not build locate
+Patch0:		findutils-4.5.15-no-locate.patch
 # add a new option -xautofs to find to not descend into directories on autofs
 # file systems
-Patch2:		findutils-4.4.2-xautofs.patch
-
+Patch1:		findutils-4.4.2-xautofs.patch
 # eliminate compile-time warnings
-Patch3:		findutils-4.5.7-warnings.patch
+Patch2:		findutils-4.5.13-warnings.patch
+# implement the -noleaf option of find (#1252549)
+Patch3:		findutils-4.5.15-leaf-opt.patch
+# learn find to recognize autofs file system by reading /proc/mounts
+# as autofs mount points are not listed in /etc/mtab
+Patch4:		findutils-4.4.2-autofs.patch
 
 BuildRequires:	texinfo
 BuildRequires:	gettext-devel
@@ -35,6 +35,7 @@ useful for finding things on your system.
 
 %prep
 %setup -q
+rm -rf locate
 %apply_patches
 
 %build
@@ -46,9 +47,9 @@ autoreconf -fiv
 
 %configure2_5x \
 	--enable-leaf-optimisation \
-	--with-packager="%{vendor}" \
-	--with-packager-bug-reports="http://issue.openmandriva.org" \
 	--enable-d_type-optimization \
+	--with-packager="%{vendor}" \
+	--with-packager-bug-reports="%{bugurl}" \
 	--with-fts
 
 %make
@@ -75,4 +76,3 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/find
 %{_mandir}/man1/oldfind.1.*
 %{_mandir}/man1/xargs.1*
 %{_infodir}/find*
-
