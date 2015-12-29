@@ -16,7 +16,7 @@ diff --git a/doc/find.texi b/doc/find.texi
 index c584298..9731b71 100644
 --- a/doc/find.texi
 +++ b/doc/find.texi
-@@ -1439,6 +1439,10 @@ them.
+@@ -1446,6 +1446,10 @@ them.
  There are two ways to avoid searching certain filesystems.  One way is
  to tell @code{find} to only search one filesystem:
  
@@ -45,9 +45,9 @@ diff --git a/find/find.1 b/find/find.1
 index e851f82..a4799ff 100644
 --- a/find/find.1
 +++ b/find/find.1
-@@ -460,6 +460,9 @@ if standard input is a tty, and to
- .B \-nowarn
- otherwise.
+@@ -520,6 +520,9 @@ to stat them; this gives a significant increase in search speed.
+ .IP "\-version, \-\-version"
+ Print the \fBfind\fR version number and exit.
  
 +.IP \-xautofs
 +Don't descend directories on autofs filesystems.
@@ -92,7 +92,7 @@ index 52a1ef6..995aec3 100644
    PARSE_TEST       ("xtype",                 xtype),	     /* GNU */
  #ifdef UNIMPLEMENTED_UNIX
    /* It's pretty ugly for find to know about archive formats.
-@@ -1230,7 +1232,7 @@ operators (decreasing precedence; -and is implicit where no others are given):\n
+@@ -1239,7 +1241,7 @@ operators (decreasing precedence; -and is implicit where no others are given):\n
  positional options (always true): -daystart -follow -regextype\n\n\
  normal options (always true, specified before other expressions):\n\
        -depth --help -maxdepth LEVELS -mindepth LEVELS -mount -noleaf\n\
@@ -101,7 +101,7 @@ index 52a1ef6..995aec3 100644
    puts (_("\
  tests (N can be +N or -N or N): -amin N -anewer FILE -atime N -cmin N\n\
        -cnewer FILE -ctime N -empty -false -fstype TYPE -gid N -group NAME\n\
-@@ -2799,6 +2801,13 @@ parse_xdev (const struct parser_table* entry, char **argv, int *arg_ptr)
+@@ -2683,6 +2685,13 @@ parse_xdev (const struct parser_table* entry, char **argv, int *arg_ptr)
  }
  
  static bool
@@ -119,7 +119,7 @@ diff --git a/find/util.c b/find/util.c
 index 8577396..4d45f84 100644
 --- a/find/util.c
 +++ b/find/util.c
-@@ -1010,6 +1010,7 @@ set_option_defaults (struct options *p)
+@@ -1017,6 +1017,7 @@ set_option_defaults (struct options *p)
  
    p->full_days = false;
    p->stay_on_filesystem = false;
