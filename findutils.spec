@@ -1,7 +1,9 @@
+%global optflags %{optflags} -O3
+
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
 Version:	4.6.0
-Release:	1
+Release:	2
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
