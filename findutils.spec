@@ -55,7 +55,6 @@ useful for finding things on your system.
 %prep
 %autosetup -p1
 rm -rf locate
-%apply_patches
 
 %build
 # Don't build or install locate because it conflicts with slocate,
