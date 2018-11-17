@@ -38,6 +38,7 @@ Patch12:	findutils-4.6.0-leaf-opt.patch
 # fix programming mistakes detected by static analysis
 Patch13:	findutils-4.6.0-covscan.patch
 
+Patch20:	findutils-4.6.0-fallthrough.patch
 BuildRequires:	texinfo
 BuildRequires:	gettext-devel
 

@@ -1,0 +1,12 @@
+diff -Naur findutils-4.6.0/gl/lib/fts.c findutils-4.6.0.tpg/gl/lib/fts.c
+--- findutils-4.6.0/gl/lib/fts.c	2018-11-17 01:06:22.080945000 +0000
++++ findutils-4.6.0.tpg/gl/lib/fts.c	2018-11-17 01:08:32.525943981 +0000
+@@ -198,7 +198,7 @@
+ #endif
+ 
+ #ifndef FALLTHROUGH
+-# if __GNUC__ < 7
++# if __GNUC__ < 7 || !__has_attribute(__fallthrough__)
+ #  define FALLTHROUGH ((void) 0)
+ # else
+ #  define FALLTHROUGH __attribute__ ((__fallthrough__))
