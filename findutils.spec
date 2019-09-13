@@ -7,7 +7,7 @@ Release:	1
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
-Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
+Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.xz
 
 # prevent mbrtowc tests from failing (#1294016)
 Patch0:		findutils-4.6.0-mbrtowc-tests.patch
