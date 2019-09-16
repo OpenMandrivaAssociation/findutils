@@ -1,4 +1,8 @@
+%ifnarch riscv64
+%global optflags %{optflags} -O3 --rtlib=compiler-rt
+%else
 %global optflags %{optflags} -O3
+%endif
 
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
