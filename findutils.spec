@@ -19,7 +19,7 @@ Patch4:		https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.5
 Patch10:	https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.6.0-test-lock.patch
 # implement the -noleaf option of find (#1252549)
 Patch12:	https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.6.0-leaf-opt.patch
-Patch20:	findutils-4.6.0-fallthrough.patch
+Patch20:	findutils-4.7.0-check-for-__builtin_mul_overflow_p.patch
 
 BuildRequires:	texinfo
 BuildRequires:	gettext-devel
