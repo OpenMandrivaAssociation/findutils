@@ -9,36 +9,18 @@ Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.xz
 
-# prevent mbrtowc tests from failing (#1294016)
-Patch0:		findutils-4.6.0-mbrtowc-tests.patch
 # do not build locate
-Patch1:		findutils-4.5.15-no-locate.patch
-# fix build failure with glibc-2.28
-# https://lists.gnu.org/r/bug-gnulib/2018-03/msg00000.html
-Patch2:		findutils-4.6.0-gnulib-fflush.patch
-# add a new option -xautofs to find to not descend into directories on autofs
-# file systems
-Patch3:		findutils-4.4.2-xautofs.patch
+Patch1:		https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.5.15-no-locate.patch
+# add a new option -xautofs to find to not descend into directories on autofs file systems
+Patch3:		https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.4.2-xautofs.patch
 # eliminate compile-time warnings
-Patch4:		findutils-4.5.13-warnings.patch
-# clarify exit status handling of -exec cmd {} + in find(1) man page (#1325049)
-Patch5:		findutils-4.6.0-man-exec.patch
-# make sure that find -exec + passes all arguments (upstream bug #48030)
-Patch6:		findutils-4.6.0-exec-args.patch
-# fix build failure with glibc-2.25+
-Patch7: findutils-4.6.0-gnulib-makedev.patch
-# avoid SIGSEGV in case the internal -noop option is used (#1346471)
-Patch9:		findutils-4.6.0-internal-noop.patch
+Patch4:		https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.5.13-warnings.patch
 # test-lock: disable the rwlock test
-Patch10:	findutils-4.6.0-test-lock.patch
-# import gnulib's FTS module from upstream commit 281b825e (#1544429)
-Patch11:	findutils-4.6.0-fts-update.patch
+Patch10:	https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.6.0-test-lock.patch
 # implement the -noleaf option of find (#1252549)
-Patch12:	findutils-4.6.0-leaf-opt.patch
-# fix programming mistakes detected by static analysis
-Patch13:	findutils-4.6.0-covscan.patch
-
+Patch12:	https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.6.0-leaf-opt.patch
 Patch20:	findutils-4.6.0-fallthrough.patch
+
 BuildRequires:	texinfo
 BuildRequires:	gettext-devel
 
@@ -75,7 +57,7 @@ autoreconf -fiv
 
 %check
 # fails because they need py2
-#make check
+make check
 
 %install
 %make_install
