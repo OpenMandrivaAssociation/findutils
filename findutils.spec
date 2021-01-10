@@ -6,12 +6,12 @@
 
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
-Version:	4.7.0
+Version:	4.8.0
 Release:	1
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
-Source0:	ftp://alpha.gnu.org/gnu/findutils/%{name}-%{version}.tar.xz
+Source0:	https://ftp.gnu.org/gnu/findutils/%{name}-%{version}.tar.xz
 
 # do not build locate
 Patch1:		https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.5.15-no-locate.patch
@@ -23,7 +23,6 @@ Patch4:		https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.5
 Patch10:	https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.6.0-test-lock.patch
 # implement the -noleaf option of find (#1252549)
 Patch12:	https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.6.0-leaf-opt.patch
-Patch20:	findutils-4.7.0-check-for-__builtin_mul_overflow_p.patch
 
 BuildRequires:	texinfo
 BuildRequires:	gettext-devel
