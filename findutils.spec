@@ -79,6 +79,6 @@ ln -sf ../../bin/find %{buildroot}%{_bindir}/oldfind
 %{_bindir}/find
 %{_bindir}/oldfind
 %{_bindir}/xargs
-%{_mandir}/man1/find.1*
-%{_mandir}/man1/xargs.1*
-%{_infodir}/find*
+%doc %{_mandir}/man1/find.1*
+%doc %{_mandir}/man1/xargs.1*
+%doc %{_infodir}/find*
