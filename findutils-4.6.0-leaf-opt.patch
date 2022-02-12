@@ -54,7 +54,7 @@ diff --git a/gl/lib/fts.c b/gl/lib/fts.c
 index d2d404f..808466f 100644
 --- a/gl/lib/fts.c
 +++ b/gl/lib/fts.c
-@@ -713,6 +713,10 @@ filesystem_type (FTSENT const *p, int fd)
+@@ -706,6 +706,10 @@ filesystem_type (FTSENT const *p, int fd)
    struct dev_type *ent;
    struct statfs fs_buf;
  
@@ -107,7 +107,7 @@ diff --git a/find/ftsfind.c b/find/ftsfind.c
 index 5159470..e34b672 100644
 --- a/find/ftsfind.c
 +++ b/find/ftsfind.c
-@@ -553,6 +553,9 @@ find (char *arg)
+@@ -509,6 +509,9 @@ find (char *arg)
    if (options.stay_on_filesystem)
      ftsoptions |= FTS_XDEV;
  
