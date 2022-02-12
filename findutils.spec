@@ -12,6 +12,7 @@ License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	https://ftp.gnu.org/gnu/findutils/%{name}-%{version}.tar.xz
+Patch0:		findutils-4.9.0-fix-clang.patch
 
 # do not build locate
 Patch1:		https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.5.15-no-locate.patch
