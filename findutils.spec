@@ -7,7 +7,7 @@
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
 Version:	4.9.0
-Release:	1
+Release:	2
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
@@ -65,19 +65,11 @@ make check
 
 %install
 %make_install
-
-install -d %{buildroot}/bin
-ln -sf %{_bindir}/find %{buildroot}/bin/find
-# (tpg) compat symlink
-ln -sf %{_bindir}/find %{buildroot}%{_bindir}/oldfind
-
 %find_lang %{name}
 
 %files -f %{name}.lang
 %doc NEWS README
-/bin/find
 %{_bindir}/find
-%{_bindir}/oldfind
 %{_bindir}/xargs
 %doc %{_mandir}/man1/find.1*
 %doc %{_mandir}/man1/xargs.1*
