@@ -59,9 +59,11 @@ autoreconf -fiv
 
 %make_build
 
+%if ! %{cross_compiling}
 %check
 # fails because they need py2
 make check
+%endif
 
 %install
 %make_install
