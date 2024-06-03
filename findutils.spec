@@ -6,13 +6,13 @@
 
 Summary:	The GNU versions of find utilities (find and xargs)
 Name:		findutils
-Version:	4.9.0
-Release:	4
+Version:	4.10.0
+Release:	1
 License:	GPLv3
 Group:		File tools
 Url:		http://www.gnu.org/software/findutils/findutils.html
 Source0:	https://ftp.gnu.org/gnu/findutils/%{name}-%{version}.tar.xz
-Patch0:		findutils-4.9.0-fix-clang.patch
+Patch0:		findutils-4.10-fix-clang.patch
 
 # do not build locate
 Patch1:		https://src.fedoraproject.org/rpms/findutils/raw/master/f/findutils-4.5.15-no-locate.patch
@@ -61,7 +61,6 @@ autoreconf -fiv
 
 %if ! %{cross_compiling}
 %check
-# fails because they need py2
 make check
 %endif
 
