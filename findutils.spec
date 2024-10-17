@@ -10,7 +10,7 @@ Version:	4.10.0
 Release:	1
 License:	GPLv3
 Group:		File tools
-Url:		http://www.gnu.org/software/findutils/findutils.html
+Url:		https://www.gnu.org/software/findutils/findutils.html
 Source0:	https://ftp.gnu.org/gnu/findutils/%{name}-%{version}.tar.xz
 Patch0:		findutils-4.10-fix-clang.patch
 
